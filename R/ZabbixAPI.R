@@ -14,7 +14,7 @@
 #' See examples.
 #'
 #' @param server A character with base URI for zabbix web interface (omitting /api_jsonrpc.php).
-#' @param user.agent,content.type Character arguments passed to \link{POST} through \link{user_agent()} and \link{content_type}.
+#' @param user.agent,content.type Character arguments passed to \link{POST} through \link{user_agent} and \link{content_type}.
 #' @param encode The same as \code{encode} in \link{POST}.
 #' @param ... Further arguments passed to \link{POST}.
 #' @param only.content,fromJSON,content.only.result 
@@ -42,8 +42,8 @@
 #'                       params = jsonlite::unbox(
 #' 	                      data.frame(user = "Admin",
 #' 	                                 password = "zabbix")))) -> auth
-#'																	 
-#' # request to get histoy of an item of 'item_id' number																	 
+#'
+#' # request to get histoy of an item of 'item_id' number
 #' ZabbixAPI("http://localhost/zabbix",
 #'           body = list(method = "history.get",
 #'                       params = jsonlite::unbox(
@@ -55,7 +55,7 @@
 #'                                   limit = 10)
 #'                      ),
 #'                      auth = auth))
-#' 											
+#'
 #' # API info
 #' ZabbixAPI('http://localhost/zabbix',
 #'           body = list(method = "apiinfo.version"))
@@ -67,28 +67,28 @@
 #' @export
 #' @rdname ZabbixAPI
 ZabbixAPI <- function(server = 'http://localhost/zabbix',
-											body = list(),
-											user.agent = 'RZabbix',
-											content.type = 'application/json-rpc',
-											encode = "json",
-											...,
-											only.content = TRUE,
-											fromJSON = TRUE,
-											content.only.result = TRUE) {
-	
-		url <- paste0(server, "/api_jsonrpc.php")
-		
-		body['jsonrpc'] <- '2.0'
-		body['id'] <- get('id', envir = .RZabbixEnv)
-		on.exit(assign('id', get('id', envir = .RZabbixEnv) +1, envir = .RZabbixEnv))
-		
+                      body = list(),
+                      user.agent = 'RZabbix',
+                      content.type = 'application/json-rpc',
+                      encode = "json",
+                      ...,
+                      only.content = TRUE,
+                      fromJSON = TRUE,
+                      content.only.result = TRUE) {
+
+    url <- paste0(server, "/api_jsonrpc.php")
+
+    body['jsonrpc'] <- '2.0'
+    body['id'] <- get('id', envir = .RZabbixEnv)
+    on.exit(assign('id', get('id', envir = .RZabbixEnv) +1, envir = .RZabbixEnv))
+
     zabbix.response <- 
-    	httr::POST(url,
-    						 content_type(content.type),
-    						 user_agent(user.agent),
-    					   encode = encode,
-    					   body = body,
-    					 	 verbose())
+      httr::POST(url,
+                content_type(content.type),
+                user_agent(user.agent),
+                encode = encode,
+                body = body,
+                verbose())
     
     if (only.content) {
     	zabbix.response <- rawToChar(zabbix.response$content)

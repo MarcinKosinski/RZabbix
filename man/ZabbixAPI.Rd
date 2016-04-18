@@ -15,7 +15,7 @@ ZabbixAPI(server = "http://localhost/zabbix", body = list(),
 \item{body}{A named list specifying \code{method}, user \code{auth} token and additional \code{params} (passed in \code{jsonlite::unbox(data.frame())}) to be used during request.
 Available methods are described in \href{https://www.zabbix.com/documentation/3.0/manual/api}{Zabbix Documentation}. One does not have to pass \code{id} and \code{jsonrpc}.}
 
-\item{user.agent, content.type}{Character arguments passed to \link{POST} through \link{user_agent()} and \link{content_type}.}
+\item{user.agent, content.type}{Character arguments passed to \link{POST} through \link{user_agent} and \link{content_type}.}
 
 \item{encode}{The same as \code{encode} in \link{POST}.}
 
@@ -51,8 +51,8 @@ ZabbixAPI('http://localhost/zabbix',
                       params = jsonlite::unbox(
 	                      data.frame(user = "Admin",
 	                                 password = "zabbix")))) -> auth
-																 
-# request to get histoy of an item of 'item_id' number																	 
+
+# request to get histoy of an item of 'item_id' number
 ZabbixAPI("http://localhost/zabbix",
           body = list(method = "history.get",
                       params = jsonlite::unbox(
@@ -64,7 +64,7 @@ ZabbixAPI("http://localhost/zabbix",
                                   limit = 10)
                      ),
                      auth = auth))
-											
+
 # API info
 ZabbixAPI('http://localhost/zabbix',
           body = list(method = "apiinfo.version"))

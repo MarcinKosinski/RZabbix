@@ -1,0 +1,5 @@
+language: r
+r_packages:
+ - jsonlite
+ - httr
+sudo: required

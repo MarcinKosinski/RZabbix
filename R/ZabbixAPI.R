@@ -24,6 +24,7 @@
 #'       \item \code{content.only.result} Should return only \code{result} part of \code{fromJSON(rawToChar(response$content))} when \code{only.content = TRUE, fromJSON = TRUE}.
 #'     }
 #' @param body A named list specifying \code{method}, user \code{auth} token and additional \code{params} (passed in \code{jsonlite::unbox(data.frame())}) to be used during request.
+#' It can also be passed as \code{JSON} through \code{character} with \code{fromJSON('json_string')} - see Examples. 
 #' Available methods are described in \href{https://www.zabbix.com/documentation/3.0/manual/api}{Zabbix Documentation}. One does not have to pass \code{id} and \code{jsonrpc}.
 #'
 #' @note 
@@ -37,6 +38,7 @@
 #' @examples
 #' \dontrun{
 #' # user authentication
+#' #####################
 #' ZabbixAPI('http://localhost/zabbix',
 #'           body = list(method = "user.login",
 #'                       params = jsonlite::unbox(
@@ -44,7 +46,8 @@
 #' 	                                 password = "zabbix")))) -> auth
 #'
 #' # request to get histoy of an item of 'item_id' number
-#' ZabbixAPI("http://localhost/zabbix",
+#' ######################################################
+#' ZabbixAPI('http://localhost/zabbix',
 #'           body = list(method = "history.get",
 #'                       params = jsonlite::unbox(
 #'                        data.frame(output = "extend",
@@ -57,10 +60,53 @@
 #'                      auth = auth))
 #'
 #' # API info
+#' ##########
 #' ZabbixAPI('http://localhost/zabbix',
 #'           body = list(method = "apiinfo.version"))
 #' 
-#'    
+#' # fromJSON example for get event data fo object with 'object_id' number
+#' #######################################################################
+#' library(jsonlite)
+#' paste0('{
+#'     "method": "event.get",
+#'     "params": {
+#'         "output": "extend",
+#'         "select_acknowledges": "extend",
+#'         "objectids": "object_id",
+#'         "sortfield": ["clock", "eventid"],
+#'         "sortorder": "DESC"
+#'     },
+#'     "auth": "', auth, '"
+#' }') -> json_rpc
+#' 
+#' ZabbixAPI('http://localhost/zabbix',
+#'           body = fromJSON(json_rpc)) -> event.info
+#' # colnames - https://www.zabbix.com/documentation/3.0/manual/api/reference/event/object           
+#'           
+#' event.info  %>%
+#'   select(value, clock) %>%
+#'   mutate(clock = 
+#'             as.POSIXct(as.numeric(clock),
+#'                        tz = "GMT",
+#'                        origin = "1970-01-01")) -> clock2viz
+#' 
+#' list2bind <- list()
+#' for(i in 1:(nrow(clock2viz)-1)) {
+#'   data.frame(
+#'     times = 
+#'       seq(from = clock2viz$clock[i+1],
+#'         to = clock2viz$clock[i],
+#'         by = "min") %>%
+#'       head(-1),
+#'     status = clock2viz$value[i+1],
+#'     stringsAsFactors = FALSE) ->
+#'   list2bind[[i]]
+#' }
+#' 
+#' library(ggplot2)
+#' do.call(bind_rows, list2bind) %>% 
+#'   ggplot(aes(x=times, y = status)) + 
+#'   geom_point(size = 0.1) 
 #' }
 #' @import httr
 #' @importFrom jsonlite fromJSON

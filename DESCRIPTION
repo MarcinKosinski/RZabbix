@@ -14,7 +14,7 @@ LazyData: yes
 Depends:
     R (>= 3.2.0)
 Imports:
-    httr,
-    jsonlite
+    httr (>= 1.1.0),
+    jsonlite (>= 0.9.19)
 BugReports: https://github.com/MarcinKosinski/RZabbix/issues
 RoxygenNote: 5.0.1

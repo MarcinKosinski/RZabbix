@@ -29,7 +29,7 @@ Available methods are described in \href{https://www.zabbix.com/documentation/3.
 }}
 }
 \description{
-\code{ZabbixAPI} function Enables easy and direct communiaction with \code{Zabbix API} from \pkg{R}.
+\code{ZabbixAPI} function enables easy and direct communication with \code{Zabbix API} from \pkg{R}.
 Each request to the \code{Zabbix API} requires passing \code{auth} authentication token. 
 Generation of the authentication token is explained \href{https://www.zabbix.com/documentation/3.0/manual/api/reference/user/login}{here} or
 can be seen in Examples section.

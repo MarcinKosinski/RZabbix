@@ -1,12 +1,12 @@
 Package: RZabbix
 Version: 0.1.0
 Type: Package
-Title: R module for working with the 'Zabbix API'
+Title: R Module For Working With The 'Zabbix API'
 Authors@R: c(
     person("Marcin", "Kosinski", role = c("aut", "cre"),
     email = "m.p.kosinski@gmail.com")
     )
-Description: R interface to the 'Zabbix API' data. Enables easy and direct communiaction with 'Zabbix API' from 'R'.
+Description: R interface to the 'Zabbix API' data <https://www.zabbix.com/documentation/3.0/manual/api/reference>. Enables easy and direct communiaction with 'Zabbix API' from 'R'.
 Repository: CRAN
 License: GPL-2
 LazyLoad: yes

@@ -18,6 +18,4 @@ library(RZabbix)
 ?ZabbixAPI # help manual page
 ````
 
-### Motivated by [pyzabbix](https://github.com/lukecyca/pyzabbix)
-
 ### [Zabbix libraries](https://www.zabbix.org/wiki/Docs/api/libraries)

@@ -9,3 +9,13 @@ RZabbix is an R module for working with the Zabbix API.
 [![Build Status](https://api.travis-ci.org/MarcinKosinski/RZabbix.png)](https://travis-ci.org/MarcinKosinski/RZabbix)
 [![Pending Pull-Requests](http://githubbadges.herokuapp.com/MarcinKosinski/RZabbix/pulls.svg?style=flat)](https://github.com/MarcinKosinski/RZabbix/pulls)
 [![Github Issues](http://githubbadges.herokuapp.com/MarcinKosinski/RZabbix/issues.svg)](https://github.com/MarcinKosinski/RZabbix/issues)
+
+# Get started
+
+````{R}
+install.packages('RZabbix') # direct installation from CRAN
+library(RZabbix)
+?ZabbixAPI # help manual page
+````
+
+### Motivated by [pyzabbix](https://github.com/lukecyca/pyzabbix)

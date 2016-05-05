@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 .travis.yml
 README.md
+RZabbix_GWP_examples.R
+haslo.rda

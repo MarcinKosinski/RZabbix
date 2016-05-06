@@ -10,6 +10,8 @@ RZabbix is an R module for working with the [Zabbix API](https://www.zabbix.com/
 [![Pending Pull-Requests](http://githubbadges.herokuapp.com/MarcinKosinski/RZabbix/pulls.svg?style=flat)](https://github.com/MarcinKosinski/RZabbix/pulls)
 [![Github Issues](http://githubbadges.herokuapp.com/MarcinKosinski/RZabbix/issues.svg)](https://github.com/MarcinKosinski/RZabbix/issues)
 
+![Orly cover](https://raw.githubusercontent.com/MarcinKosinski/RZabbix/master/orly.png)
+
 # Getting started
 
 ````{R}
@@ -20,4 +22,4 @@ library(RZabbix)
 
 ### [Zabbix libraries](https://www.zabbix.org/wiki/Docs/api/libraries)
 
-[![Orly cover](https://raw.githubusercontent.com/MarcinKosinski/RZabbix/master/orly.png)]
+

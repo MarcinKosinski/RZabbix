@@ -19,3 +19,5 @@ library(RZabbix)
 ````
 
 ### [Zabbix libraries](https://www.zabbix.org/wiki/Docs/api/libraries)
+
+[![Orly cover](https://raw.githubusercontent.com/MarcinKosinski/RZabbix/master/orly.png)]

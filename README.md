@@ -1,3 +1,5 @@
+[Monitoring R Applications with RZabbix](http://r-addict.com/2016/09/15/RZabbix-Announcement.html)
+
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/RZabbix)](http://cran.r-project.org/web/packages/RZabbix)
 [![Downloads](http://cranlogs.r-pkg.org/badges/RZabbix)](http://cran.rstudio.com/package=RZabbix)
 [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/RZabbix?color=orange)](http://cranlogs.r-pkg.org/badges/grand-total/RZabbix)
